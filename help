@@ -1,0 +1,67 @@
+// Constructor functions act like Classes in Object Orietend Languages
+// JavaScript, since ES5 has built-in Classes but you still find Constructor Functions in some old codebases
+
+function Car(brand, name, numberOfDoors, isManual, isElectric, horsepower, maxSpeed) {
+  // Static Properties
+  this.brand = brand
+  this.name = name
+  this.numberOfDoors = numberOfDoors
+  this.isManual = isManual 
+  this.isElectric = isElectric
+  this.horsepower = horsepower
+  this.maxSpeed = maxSpeed
+
+  // Dynamic Properties
+  this.currentSpeed = 0
+
+  this.accelerate = function () {
+    if(horsepower > 0 && horsepower <= 100) {
+      if(this.currentSpeed + 10 <= this.maxSpeed) {
+        this.currentSpeed += 10
+      } else {
+        this.currentSpeed = this.maxSpeed
+      }
+    }
+
+    if(horsepower > 100 && horsepower <= 300) {
+      if(this.currentSpeed + 25 <= this.maxSpeed) {
+        this.currentSpeed += 25
+      } else {
+        this.currentSpeed = this.maxSpeed
+      }
+    }
+
+    if(horsepower > 300 && horsepower <= 500) {
+      if(this.currentSpeed + 45 <= this.maxSpeed) {
+        this.currentSpeed += 45
+      } else {
+        this.currentSpeed = this.maxSpeed
+      }
+    }
+  }
+
+  this.getSpeed = function() {
+    console.log(`${this.currentSpeed} Km/h`))
+  }
+
+  this.brake = function(brakeForce) { // brakeForce is a percentage
+    let breakForcePercentage = breakForce / 100
+  
+    this.currentSpeed = this.currentSpeed - (this.currentSpeed * breakForcePercentage)
+  }
+
+  this.stop = function() {
+    this.currentSpeed = 0
+  }
+}
+
+const hondaCivic = new Car('Honda', 'Civic', 4, true, false, 190, 170)
+
+console.log(hondaCivic)
+
+hondaCivic.getSpeed()
+hondaCivic.accelerate()
+
+
+
+
